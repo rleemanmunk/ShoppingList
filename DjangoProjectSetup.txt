@@ -8,4 +8,9 @@
     python manage.py runserver
 4) Create models
     python manage.py startapp model_name
+    When you change your models:
+        - python manage.py makemigrations
+        - python manage.py migrate
+5) Create superuser
+    python manage.py createsuperuser
 
