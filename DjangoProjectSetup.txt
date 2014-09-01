@@ -1,0 +1,11 @@
+1) Create Project 
+    django-admin startproject mysite
+2) Setup Database
+    Edit mysite/settings.py
+    - set TIME_ZONE to your timezone (US/Eastern)
+    - python manage.py migrate
+3) Start Development Server
+    python manage.py runserver
+4) Create models
+    python manage.py startapp model_name
+
