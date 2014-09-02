@@ -6,10 +6,11 @@ class Category(models.Model):
     verbose_name_plural = "Categories"
     def __str__(self):
         return self.category_name;
+    class Meta:
+        verbose_name_plural = "categories"
 
 class Store(models.Model):
     store_name = models.CharField(max_length=100) 
-    verbose_name = "Shop"
     def __str__(self):
         return self.store_name;
 
