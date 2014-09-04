@@ -7,13 +7,12 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('GroceryItem', '0001_initial'),
+        ('item', '0002_auto_20140901_1707'),
     ]
 
     operations = [
-        migrations.RenameField(
-            model_name='item',
-            old_name='store_name',
-            new_name='store',
+        migrations.AlterModelOptions(
+            name='category',
+            options={'verbose_name_plural': 'categories'},
         ),
     ]

@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('item_name', models.CharField(max_length=100)),
                 ('price', models.DecimalField(max_digits=5, decimal_places=2)),
-                ('category', models.ForeignKey(to='GroceryItem.Category')),
+                ('category', models.ForeignKey(to='item.Category')),
             ],
             options={
             },
@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='item',
             name='store_name',
-            field=models.ForeignKey(to='GroceryItem.Store'),
+            field=models.ForeignKey(to='item.Store'),
             preserve_default=True,
         ),
     ]

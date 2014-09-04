@@ -1,5 +1,5 @@
 from django.contrib import admin
-from GroceryItem.models import Category, Store, Item
+from item.models import Category, Store, Item
 
 class ItemAdmin(admin.ModelAdmin):
     fieldsets = [

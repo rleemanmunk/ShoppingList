@@ -20,5 +20,5 @@ class Item(models.Model):
     price = models.DecimalField(max_digits = 5, decimal_places=2)
     store = models.ForeignKey(Store)
     def __str__(self):
-        return self.item_name;
+        return self.item_name + "( $" + str(self.price) + " )"
     
