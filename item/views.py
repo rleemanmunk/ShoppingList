@@ -23,14 +23,29 @@ def detail(request, item_id):
     })
 
 def update(request, item_id):
-    p = get_object_or_404(Item, pk=item_id)
-    p.item_name = request.POST['name']
-    p.category = Category.objects.get(pk=request.POST['category'])
-    p.price = request.POST['price']
-    p.store = Store.objects.get(pk=request.POST['store'])
-    p.save()
-    return HttpResponseRedirect(reverse('item:detail', args=(p.id,)))
+    # Get user parameters
+    item_name = request.POST['name']
+    category = Category.objects.get(pk=request.POST['category'])
+    price = request.POST['price']
+    store = Store.objects.get(pk=request.POST['store'])
+    # Check if item was referenced
+    try: 
+        p = Item.objects.get(pk=item_id)
+    except (KeyError, Item.DoesNotExist):
+        # If item does not exist, create an item
+        p = Item.objects.create_item(item_name, category, price, store)
+        return HttpResponseRedirect(reverse('item:index'))
+    else:
+        # If an item was sent, update that item's attributes
+        p.item_name = item_name
+        p.category = category
+        p.price = price
+        p.store = store
+        p.save()
+        return HttpResponseRedirect(reverse('item:detail', args=(p.id,)))
 
 def new(request):
     return render(request, 'item/new.html', {
+        "store_list": Store.objects.all(),
+        "category_list": Category.objects.all()
     })

@@ -1,1 +1,16 @@
-This is the page for new questions
+<form action="{% url 'item:update' 0 %}" method="post">
+   {% csrf_token %}
+   Name: <input type="text" name="name" value="" /><br /> 
+   Category: <select name="category">
+   {% for category in category_list %}
+        <option value="{{ category.id }}">{{ category.category_name }}</option>
+   {% endfor %}
+   </select><br />
+   Price: <input type="text" name="price" value="" /><br /> 
+   Store: <select name="store">
+   {% for store in store_list %}
+        <option value="{{ store.id }}">{{ store.store_name }}</option>
+   {% endfor %}
+   </select><br />
+   <input type="submit" value="Create"/>
+</form>
