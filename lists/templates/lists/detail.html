@@ -1,0 +1,16 @@
+<form action="{% url 'item:update' item.id %}" method="post">
+   {% csrf_token %}
+   Name: <input type="text" name="name" value="{{ item.item_name }}" /><br /> 
+   Category: <select name="category">
+   {% for category in category_list %}
+        <option value="{{ category.id }}" {% if item.category == category %}selected{% endif %}>{{ category.category_name }}</option>
+   {% endfor %}
+   </select><br />
+   Price: <input type="text" name="price" value="{{ item.price }}" /><br /> 
+   Store: <select name="store">
+   {% for store in store_list %}
+        <option value="{{ store.id }}" {% if item.store == store %}selected{% endif %}>{{ store.store_name }}</option>
+   {% endfor %}
+   </select><br />
+   <input type="submit" value="Update"/>
+</form>

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-md-6">
+   {% for item in item_list %}
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="{{ item.id }}" data-category="{{ item.category }}">{{ item }}
+            </label>
+        </div>
+   {% endfor %}
+</div>
+<div class="col-md-6" id="shoppingList">
+    <!--<form action="{% url 'item:update' 0 %}" method="post">-->
+    <form action="#" method="post">
+       {% csrf_token %}
+       <input type="submit" value="Save" class="btn btn-primary"/>
+    </form>
+</div>
+{% endblock %}
