@@ -1,0 +1,22 @@
+html, body, .container, #content, .row, #options, #shoppingList {
+    height: 100%;
+}
+#listBox {
+    height: 400px;
+    overflow: none;
+    margin: auto;
+}
+.bottom {
+    position: absolute;
+    bottom: 5px;
+}
+.right {
+    right: 5px;
+}
+.left {
+    left: 5px;
+}
+.panel-primary {
+    height: 100%;
+    position: relative;
+}
