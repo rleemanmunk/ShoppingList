@@ -5,6 +5,7 @@ html, body, .container, #content, .row, #options, #shoppingList {
     height: 400px;
     overflow: none;
     margin: auto;
+    margin-top: 10px;
 }
 .bottom {
     position: absolute;
@@ -19,4 +20,7 @@ html, body, .container, #content, .row, #options, #shoppingList {
 .panel-primary {
     height: 100%;
     position: relative;
+}
+.listItems li {
+    margin-top: 5px;
 }

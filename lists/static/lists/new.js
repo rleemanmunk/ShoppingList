@@ -6,7 +6,7 @@ var total = 0;
 function addToList(itemName, itemId, itemPrice) {
     var index = list.indexOf(itemId);
     if(index == -1) {
-        $(".listItems").append("<li id='" + itemId + "'>" + itemName + "</li>");
+        $(".listItems>ul").append("<li id='" + itemId + "'>" + itemName + "</li>");
         list.push(itemId);
         console.log(list);
         updateTotal(itemPrice, true);

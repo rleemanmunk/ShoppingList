@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" href="{% static "lists/main.css" %}">
+{% endblock %}
+{% block js %}
+    <script src="{% static "lists/new.js" %}"></script>
+{% endblock %}
+{% block content %}
+<div class="row">
+<div class="col-xs-0 col-sm-1"></div>
+<div class="col-xs-12 col-sm-10" id="listBox">
+    <div class="row">
+        <div class="col-xs-6" id="options">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Options</div>
+                    <div class="panel-body">
+                   {% for item in item_list %}
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="{{ item.id }}" data-category="{{ item.category }}" onclick="addToList('{{ item }}', {{ item.id }}, {{ item.price }})">{{ item }}
+                            </label>
+                        </div>
+                   {% endfor %}
+               </div>
+           </div>
+        </div>
+        <div class="col-xs-6" id="shoppingList">
+            <div class="panel panel-primary">
+                <div class="panel-heading">{{ list }}<span class="badge pull-right" id="total">$0</span></div>
+                <div class="panel-body">
+                    <!--<form action="{% url 'item:update' 0 %}" method="post">-->
+                    <form action="#" method="post">
+                       {% csrf_token %}
+                       <ul>
+                           <div class="listItems"></div>
+                       </ul>
+                       <input type="submit" value="Save" class="btn btn-primary bottom right"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
