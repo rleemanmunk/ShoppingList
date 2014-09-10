@@ -28,3 +28,12 @@ def update(request, list_id):
         "store_list": Store.objects.all(),
         "category_list": Category.objects.all()
     })
+
+def save(request, list_id):
+    l = get_object_or_404(List, pk=list_id)
+    items = request.POST.getlist('item');
+    l.items.clear()
+    for item in items:
+        i = get_object_or_404(Item, pk=item)
+        l.items.add(i)
+    return HttpResponseRedirect(reverse('lists:update', args=(l.id,))) 

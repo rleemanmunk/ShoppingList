@@ -5,6 +5,13 @@
 {% endblock %}
 {% block js %}
     <script src="{% static "lists/new.js" %}"></script>
+    <script>
+        window.onload = function() {
+            {% for item in list.items.all %}
+            addToList("{{ item }}", {{ item.id }}, {{ item.price }});
+            {% endfor %}
+        };
+    </script>
 {% endblock %}
 {% block content %}
 <div class="row">
@@ -18,7 +25,7 @@
                    {% for item in item_list %}
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" value="{{ item.id }}" data-category="{{ item.category }}" onclick="addToList('{{ item }}', {{ item.id }}, {{ item.price }})">{{ item }}
+                                <input type="checkbox" value="{{ item.id }}" data-category="{{ item.category }}" onclick="addToList('{{ item }}', {{ item.id }}, {{ item.price }})" {% if item in list.items.all %} checked {% endif %}>{{ item }}
                             </label>
                         </div>
                    {% endfor %}
@@ -29,15 +36,10 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">{{ list }}<span class="badge pull-right" id="total">$0</span></div>
                 <div class="panel-body">
-                    <!--<form action="{% url 'item:update' 0 %}" method="post">-->
-                    <form action="#" method="post">
+                    <form action="{% url 'lists:save' list.id %}" method="post" enctype="multipart/form-data">
                        {% csrf_token %}
                        <ul>
-                           <div class="listItems">
-                                {% for item in list.items.all %}
-                                    <li id="{{ item.id }}">{{ item  }}</li>
-                                {% endfor %}
-                           </div>
+                           <div class="listItems"></div>
                        </ul>
                        <input type="submit" value="Save" class="btn btn-primary bottom right"/>
                     </form>
