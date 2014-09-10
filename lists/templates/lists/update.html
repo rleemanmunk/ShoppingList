@@ -33,7 +33,11 @@
                     <form action="#" method="post">
                        {% csrf_token %}
                        <ul>
-                           <div class="listItems"></div>
+                           <div class="listItems">
+                                {% for item in list.items.all %}
+                                    <li id="{{ item.id }}">{{ item  }}</li>
+                                {% endfor %}
+                           </div>
                        </ul>
                        <input type="submit" value="Save" class="btn btn-primary bottom right"/>
                     </form>

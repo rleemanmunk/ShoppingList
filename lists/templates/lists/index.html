@@ -1,1 +1,8 @@
 <a href="{% url 'lists:new' %}">New List</a>
+{% if lists %}
+    <ul>
+    {% for list in lists %}
+       <li><a href="{% url 'lists:update' list.id %}">{{ list.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
