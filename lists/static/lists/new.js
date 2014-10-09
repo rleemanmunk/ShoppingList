@@ -6,11 +6,11 @@ var total = 0;
 function addToList(itemName, itemId, itemPrice) {
     var index = list.indexOf(itemId);
     if(index == -1) {
-        $(".listItems").append("<li id='" + itemId + "'><input type='text' value='" + itemId + "' name='item' hidden>" + itemName + "</li>");
+        $(".listItems").append("<li id='item" + itemId + "'><input type='text' value='" + itemId + "' name='item' hidden>" + itemName + "</li>");
         list.push(itemId);
         updateTotal(itemPrice, true);
     } else {
-        $("li#" + itemId).remove(); 
+        $("li#item" + itemId).remove(); 
         if (index > -1) {
             list.splice(index, 1);
         }
@@ -28,3 +28,4 @@ function updateTotal(itemPrice, add) {
     $("#total").empty();
     $("#total").append("$" + total);
 }
+
